@@ -6,7 +6,7 @@ image_config: &image_config
 
   IMAGE_NAME: platform
 
-  IMAGE_TAG: v3
+  IMAGE_TAG: v3-no-java
 
   # NOTE: if you're modifying this config.yml file manually
   # rather than using the included setup script,
@@ -21,7 +21,7 @@ image_config: &image_config
 
   # PYTHON_VERSION_NUM: # pick a version from https://python.org/ftp/python
 
-  JAVA: true
+  JAVA: false
 
   MYSQL_CLIENT: true
 
@@ -54,7 +54,7 @@ jobs:
 
   test_image:
     docker:
-      - image: $DOCKER_USERNAME/platform:v3
+      - image: $DOCKER_USERNAME/platform:v3-no-java
         environment:
           <<: *image_config
 
