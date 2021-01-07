@@ -113,9 +113,9 @@ RUN if [ \$(grep 'VERSION_ID="8"' /etc/os-release) ] ; then \\
     apt-get update && apt-get -y install -t jessie-backports xvfb phantomjs \\
     echo "ENV DISPLAY :99"
 ; else \\
-    wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2
-    bzip2 -d phantomjs-2.1.1-linux-x86_64.tar.bz2
-    tar -xvf phantomjs-2.1.1-linux-x86_64.tar
+    wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2 && \\
+    bzip2 -d phantomjs-2.1.1-linux-x86_64.tar.bz2 && \\
+    tar -xvf phantomjs-2.1.1-linux-x86_64.tar && \\
     cp phantomjs-2.1.1-linux-x86_64/bin/phantomjs /usr/bin/phantomjs
 ; fi
 EOF
