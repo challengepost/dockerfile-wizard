@@ -6,7 +6,7 @@ image_config: &image_config
 
   IMAGE_NAME: platform
 
-  IMAGE_TAG: v3-java-node10
+  IMAGE_TAG: v3
 
   # NOTE: if you're modifying this config.yml file manually
   # rather than using the included setup script,
@@ -54,7 +54,7 @@ jobs:
 
   test_image:
     docker:
-      - image: $DOCKER_USERNAME/platform:v3-java-node10
+      - image: $DOCKER_USERNAME/platform:v3
         environment:
           <<: *image_config
 

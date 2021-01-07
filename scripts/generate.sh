@@ -102,16 +102,23 @@ echo "RUN perl -MCPAN -e 'install XML::Generator'"
 # install lsb-release, etc., for testing linux distro
 echo "RUN apt-get update && apt-get -y install lsb-release unzip"
 
+
+# original phantomjs install had issues - https://github.com/ariya/phantomjs/issues/14376
+# apt-get update && apt-get -y install xvfb phantomjs \\
+
 if [ $BROWSERS = "true" ] ; then
 cat << EOF
 RUN if [ \$(grep 'VERSION_ID="8"' /etc/os-release) ] ; then \\
     echo "deb http://ftp.debian.org/debian jessie-backports main" >> /etc/apt/sources.list && \\
     apt-get update && apt-get -y install -t jessie-backports xvfb phantomjs \\
+    echo "ENV DISPLAY :99"
 ; else \\
-		apt-get update && apt-get -y install xvfb phantomjs \\
+    wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2
+    bzip2 -d phantomjs-2.1.1-linux-x86_64.tar.bz2
+    tar -xvf phantomjs-2.1.1-linux-x86_64.tar
+    cp phantomjs-2.1.1-linux-x86_64/bin/phantomjs /usr/bin/phantomjs
 ; fi
 EOF
-echo "ENV DISPLAY :99"
 
 echo "# install firefox
 RUN curl --silent --show-error --location --fail --retry 3 --output /tmp/firefox.deb https://s3.amazonaws.com/circle-downloads/firefox-mozilla-build_47.0.1-0ubuntu1_amd64.deb \
