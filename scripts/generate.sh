@@ -136,7 +136,7 @@ RUN curl --silent --show-error --location --fail --retry 3 --output /tmp/google-
 
 echo "# install chromedriver
 RUN apt-get -y install libgconf-2-4 \
-  && curl --silent --show-error --location --fail --retry 3 --output /tmp/chromedriver_linux64.zip \"https://chromedriver.storage.googleapis.com/89.0.4389.23/chromedriver_linux64.zip\" \
+  && curl --silent --show-error --location --fail --retry 3 --output /tmp/chromedriver_linux64.zip \"https://chromedriver.storage.googleapis.com/2.36/chromedriver_linux64.zip\" \
   && cd /tmp \
   && unzip chromedriver_linux64.zip \
   && rm -rf chromedriver_linux64.zip \
