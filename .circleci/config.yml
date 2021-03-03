@@ -6,7 +6,7 @@ image_config: &image_config
 
   IMAGE_NAME: platform
 
-  IMAGE_TAG: v3.1
+  IMAGE_TAG: v3.2
 
   # NOTE: if you're modifying this config.yml file manually
   # rather than using the included setup script,
